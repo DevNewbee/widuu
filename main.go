@@ -9,6 +9,8 @@ func main(){
 	a.test()
 	fmt.Println(a)
 }
+
 func (u *User) test(){
 	fmt.Println(u.Age)
 }
+
