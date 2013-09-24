@@ -3,7 +3,7 @@
 <code><pre>
 package main
 
-import \"fmt\"
+import fmt
 
 func main(){
 	a:=[]int{1,2,3}
