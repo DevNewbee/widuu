@@ -25,14 +25,14 @@ function gettrain($start,$end,$data){
     if(empty($startstaion)||empty($endstation)){
         exit("stdin error");
     }
-    $url ="https://kyfw.12306.cn/otn/lcxxcx/query?purpose_codes=ADULT&queryDate=$date&from_station=$startstaion&to_station=$endstation";
+    $url ="http://kyfw.12306.cn/otn/lcxxcx/query?purpose_codes=ADULT&queryDate=$date&from_station=$startstaion&to_station=$endstation";
     $data = doget($url);
     if(!$data['status']){
         exit('check error');
     }else{
         $data = $data['data']['datas'];
         foreach ($data as $key => $value) {
-            $price = doget("https://kyfw.12306.cn/otn/leftTicket/queryTicketPrice?train_no=".$data[$key]["train_no"]."&from_station_no=".$data[$key]["from_station_no"]."&to_station_no=".$data[$key]["to_station_no"]."&seat_types=".$data[$key]["seat_types"]."&train_date=$date");
+            $price = doget("http://kyfw.12306.cn/otn/leftTicket/queryTicketPrice?train_no=".$data[$key]["train_no"]."&from_station_no=".$data[$key]["from_station_no"]."&to_station_no=".$data[$key]["to_station_no"]."&seat_types=".$data[$key]["seat_types"]."&train_date=$date");
 			$data[$key]["gr_num"] =  $data[$key]["gr_num"]."(".$price["data"]["A6"].")";
 			$data[$key]["qt_num"] =  $data[$key]["qt_num"]."(".$price["data"]["OT"][0].")";
 			$data[$key]["rw_num"] =  $data[$key]["rw_num"]."(".$price["data"]["A4"].")";
