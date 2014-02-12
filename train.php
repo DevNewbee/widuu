@@ -50,7 +50,7 @@ function gettrain($start,$end,$data){
 }
 
 function doget($url){
-    if(!function_exists('file_get_contents')) {
+    if(function_exists('file_get_contents')) {
         $optionget = array('http' => array('method' => "GET", 'header' => "User-Agent:Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.5.21022; .NET CLR 3.0.04506; CIBA)\r\nAccept:*/*\r\nReferer:https://kyfw.12306.cn/otn/lcxxcx/init"));
         $file_contents = file_get_contents($url, false , stream_context_create($optionget));
     } else {
